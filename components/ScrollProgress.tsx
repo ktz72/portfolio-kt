@@ -16,7 +16,7 @@ export default function ScrollProgress() {
   const [color, setColor] = useState(SECTION_COLORS.about.bar);
 
   useEffect(() => {
-    const ids = ["about", "projects", "timeline", "contact"];
+    const ids = ["about", "projects", "timeline", "skills","contact"];
 
     const handleScroll = () => {
       const scrollPos = window.scrollY + window.innerHeight / 3;

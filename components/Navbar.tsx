@@ -1,8 +1,11 @@
+import { label } from "framer-motion/client";
+
 const links = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Timeline", href: "#schedule" },
   { label: "Contact", href: "#contact" },
+  {label: "Skills",href:"#skills"},
 ];
 
 export default function Navbar() {

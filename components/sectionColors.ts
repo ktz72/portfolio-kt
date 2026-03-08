@@ -20,6 +20,12 @@ export const SECTION_COLORS: Record<
     b: "rgba(139,92,246,0.14)", // violet
     line: "rgba(34,211,238,0.35)",
   },
+  skills:{
+    bar: "#a855f7",
+    a: "rgba(168,85,247,0.22)",
+    b: "rgba(59,130,249,0.14)",
+    line: "rgba(168,85,247,0.35)",
+  },
   contact: {
     bar: "#f59e0b", // amber
     a: "rgba(245,158,11,0.22)",

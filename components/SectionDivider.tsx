@@ -8,7 +8,7 @@ export default function SectionDivider({
   flip = false,
   className = "",
 }: {
-  section?: "about" | "projects" | "timeline" | "contact";
+  section?: "about" | "projects" | "timeline" | "skills"| "contact";
   flip?: boolean;
   className?: string;
 }) {

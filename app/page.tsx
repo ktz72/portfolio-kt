@@ -10,23 +10,27 @@ import ScrollProgress from "@/components/ScrollProgress";
 import SectionDivider from "@/components/SectionDivider";
 import GlobeMapBackground from "@/components/GlobeMapBackgorund";
 import GlobeCityTooltips from "@/components/GlobeCityTooltips";
+import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      <GlobeMapBackground />
+      
       {/* Background glow (purely visual) */}
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute left-[-10%] top-[-10%] h-[420px] w-[420px] rounded-full bg-violet-600/20 blur-3xl" />
         <div className="absolute right-[-10%] top-[5%] h-[420px] w-[420px] rounded-full bg-emerald-500/15 blur-3xl" />
       </div>
       <GlobeCityTooltips />
+      
       <ScrollProgress />
       <ParallaxBackground />
 
       <Navbar />
+      
 
       <main className="realtive z-10 mx-auto w-full max-w-6xl px-4">
+        <GlobeMapBackground />
         <Hero />
 
         <Section id="about" title="About" subtitle="Short, skimmable, and clear.">
@@ -60,11 +64,17 @@ export default function Home() {
         </FadeIn>
         <SectionDivider section="timeline" className="my-10" />
         <FadeIn delay={0.2}>
+          <Section id="skills" title="Skills">
+            <Skills />
+          </Section>
+        </FadeIn>
+        <SectionDivider section="skills" flip  className="my-10" />
+        <FadeIn delay={0.2}>
           <Section id="contact" title="Contact">
             <Contact />
           </Section>
         </FadeIn>
-        <SectionDivider section="contact" flip className="my-10" />
+        <SectionDivider section="contact"  className="my-10" />
 
         <footer className="py-10 text-center text-sm text-slate-400">
           © {new Date().getFullYear()} Your Name

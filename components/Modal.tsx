@@ -40,7 +40,7 @@ export default function Modal({
           <motion.div
             role="dialog"
             aria-modal="true"
-            className="relative w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 text-slate-100 shadow-2xl"
+            className="relative w-[min(1100px,92vw)] max-h-[90vh] h-full overflow-hidden rounded-3xl border border-white/10 bg-slate-950 text-slate-100 shadow-2xl"
             style={{ transformOrigin: `${x}px ${y}px` }}
             initial={{ scale: 0.55, opacity: 0, y: 18 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export default function Modal({
               ✕
             </button>
 
-            <div className="p-6">{children}</div>
+            <div className="h-full">{children}</div>
           </motion.div>
         </motion.div>
       ) : null}
