@@ -5,16 +5,13 @@ export default function Hero() {
         GIS • Remote Sensing • Machine Learning
       </p>
 
-      <h1 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
-        Hi, I’m <span className="text-violet-300">Keerthi Teja</span>.
+      <h1 className="text-5xl font-bold leading-tight md:text-6xl">
+        Hi, I’m {""} <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">Keerthi Teja</span>.
         <br />
-        I build maps & models that tell stories.
+        I turn spatial data into maps, models and meaninful insights.
       </h1>
 
-      <p className="mt-4 max-w-2xl text-slate-300">
-        GIS • Remote Sensing • Risk Modeling
-        
-      </p>
+
 
       <div className="mt-6 flex flex-wrap gap-3">
         <a
