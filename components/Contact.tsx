@@ -8,7 +8,7 @@ export default function Contact() {
         </a>
         <br />
         LinkedIn:{" "}
-        <a className="font-semibold text-slate-100 hover:text-white" href="https/linkedin.com/in/keerthi-teja-428113166" target="_blank" rel="noreferrer">
+        <a className="font-semibold text-slate-100 hover:text-white" href="https://linkedin.com/in/keerthi-teja-428113166/" target="_blank" rel="noreferrer">
           Keerthi Teja
         </a>
       </p>

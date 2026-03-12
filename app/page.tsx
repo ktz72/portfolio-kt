@@ -16,6 +16,8 @@ import Opener from "@/components/Opener";
 
 export default function Home() {
   const [showTechnicalElements, setShowTechnicalElements] = useState(false);
+  const [activeProject,setActiveProject]=useState<any|null>(null);
+  const isModalOpen = !!activeProject;
 
   useEffect(() => {
     const aboutSection = document.getElementById("about");
@@ -34,9 +36,17 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(()=>{
+    const originalOverflow = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow=isModalOpen?"hidden":originalOverflow;
+    return () =>{
+      document.body.style.overflow =originalOverflow;
+    };
+  },[isModalOpen]);
+
   return (
     <div className="bg-slate-950 text-slate-100 selection:bg-violet-500/30">
-      <div className="fixed top-0 left-0 right-0 z-[100]">
+      <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isModalOpen?"pointer-event-none opacity-0 -translate-y-4":"opacity-100 translate-y-0"}`}>
           <Navbar />
           <ScrollProgress />
         </div>
@@ -93,7 +103,7 @@ export default function Home() {
         </Section>
 
         <SectionDivider section="about" className="my-10" />
-        <FadeIn><section id="projects"><Projects /></section></FadeIn>
+        <FadeIn><Section id="projects" title="Projects"><Projects activeProject={activeProject} setActiveProject={setActiveProject} /></Section></FadeIn>
         <SectionDivider section="projects" flip className="my-20" />
         <FadeIn delay={0.1}><Section id="timeline" title="Timeline"><Timeline /></Section></FadeIn>
         <SectionDivider section="timeline" className="my-20" />
@@ -103,7 +113,7 @@ export default function Home() {
 
         <footer className="py-20 text-center text-sm text-slate-500">
           <p>© {new Date().getFullYear()} Keerthi Teja M</p>
-          <p className="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-40">Atlanta, GA • Georgia Tech</p>
+          <p className="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-40">Atlanta, GA • USA</p>
         </footer>
       </main>
     </div>

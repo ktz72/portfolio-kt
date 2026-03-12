@@ -8,8 +8,7 @@ import { point } from "leaflet";
 
   const ZoomMap=dynamic(()=>import("@/components/ZoomMap"),{ssr:false});
   const LeafletMap=dynamic(()=>import("@/components/LeafletMap"),{ssr:false});
-
-
+  
   type Project = {
     title: string;
     desc: string;
@@ -38,6 +37,11 @@ import { point } from "leaflet";
         color?:string;
       }[];
     };
+  };
+  
+    type ProjectProps ={
+    activeProject:Project|null;
+    setActiveProject:React.Dispatch<React.SetStateAction<Project|null>>;
   };
 
   const projects: Project[] = [
@@ -125,95 +129,96 @@ import { point } from "leaflet";
     },
   ];
 
-  export default function Projects() {
-    const [active, setActive] = useState<Project | null>(null);
-    const[origin,setOrigin] =useState<{x:number,y:number} |null>(null);
+export default function Projects({
+  activeProject,
+  setActiveProject,
+}: ProjectProps) {
+  const [origin, setOrigin] = useState<{ x: number; y: number } | null>(null);
 
-    // Close with Escape
-    useEffect(() => {
-      const onKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") setActive(null);
-      };
-      window.addEventListener("keydown", onKeyDown);
-      return () => window.removeEventListener("keydown", onKeyDown);
-    }, []);
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveProject(null);
+        setOrigin(null);
+      }
+    };
 
-    return (
-      <LayoutGroup>
-        <div className="grid gap-4 md:grid-cols-3">
-          {projects.map((p) => {
-            const imageId = `project-image-${p.title}`;
-            const titleId = `project-title-${p.title}`;
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [setActiveProject]);
 
-            return (
-              <article
-                key={p.title}
-                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10"
-                onClick={(e) => {
-                  setOrigin({x:e.clientX,y:e.clientY});
-                  setActive(p);
-                }}
-              >
-                {/* Glow */}
-                <div className="pointer-events-none absolute inset-0 -z-10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="h-full w-full rounded-2xl bg-violet-500/10" />
-                </div>
+  return (
+    <LayoutGroup>
+      <div className="grid gap-4 md:grid-cols-3">
+        {projects.map((p) => {
+          const imageId = `project-image-${p.title}`;
+          const titleId = `project-title-${p.title}`;
 
-                {/* Shared-element image */}
-                <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-black/20">
-                  <motion.img
-                    layoutId={imageId}
-                    src={p.image}
-                    alt={p.title}
-                    className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                  />
-                </div>
+          return (
+            <article
+              key={p.title}
+              className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10"
+              onClick={(e) => {
+                setOrigin({ x: e.clientX, y: e.clientY });
+                setActiveProject(p);
+              }}
+            >
+              <div className="pointer-events-none absolute inset-0 -z-10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100">
+                <div className="h-full w-full rounded-2xl bg-violet-500/10" />
+              </div>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-slate-300"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Shared-element title (optional but looks great) */}
-                <motion.h3
-                  layoutId={titleId}
-                  className="mt-4 text-lg font-semibold"
+              <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-black/20">
+                <motion.img
+                  layoutId={imageId}
+                  src={p.image}
+                  alt={p.title}
+                  className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                >
-                  {p.title}
-                </motion.h3>
+                />
+              </div>
 
-                <p className="mt-2 text-sm text-slate-300">{p.desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-slate-300"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
 
-                <div className="mt-4 text-sm text-slate-400">
-                  Click to view details →
-                </div>
-              </article>
-            );
-          })}
-        </div>
+              <motion.h3
+                layoutId={titleId}
+                className="mt-4 text-lg font-semibold"
+                transition={{ type: "spring", stiffness: 320, damping: 30 }}
+              >
+                {p.title}
+              </motion.h3>
 
-        <Modal open={!!active}
+              <p className="mt-2 text-sm text-slate-300">{p.desc}</p>
+
+              <div className="mt-4 text-sm text-slate-400">
+                Click to view details →
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <Modal
+        open={!!activeProject}
         origin={origin}
-        onClose={()=>{
-          setActive(null);
+        onClose={() => {
+          setActiveProject(null);
           setOrigin(null);
-        }}>
-          {active ? (
-            <ModalContent project={active} />
-          ) : null}
-        </Modal>
-      </LayoutGroup>
-    );
-  }
+        }}
+      >
+        {activeProject ? <ModalContent project={activeProject} /> : null}
+      </Modal>
+    </LayoutGroup>
+  );
+}
 
   function ModalContent({ project }: { project: Project }) {
   const imageId = `project-image-${project.title}`;
