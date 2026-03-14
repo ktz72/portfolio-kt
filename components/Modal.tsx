@@ -47,7 +47,7 @@ export default function Modal({
           >
             <button
               onClick={onClose}
-              className="absolute right-3 top-3 z-[320] rounded-xl border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200 hover:bg-white/10"
+              className="absolute right-3 top-3 z-[320] rounded-xl border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200 hover:bg-white/70"
             >
               ✕
             </button>

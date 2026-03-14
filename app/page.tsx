@@ -14,6 +14,7 @@ import GlobeCityTooltips from "@/components/GlobeCityTooltips";
 import Skills from "@/components/Skills";
 import Opener from "@/components/Opener";
 
+
 export default function Home() {
   const [showTechnicalElements, setShowTechnicalElements] = useState(false);
   const [activeProject,setActiveProject]=useState<any|null>(null);
@@ -84,7 +85,7 @@ export default function Home() {
           Slides over the globe but stays under the fixed Navbar. */}
       <main className="relative z-10 mx-auto w-full max-w-6xl px-4">
         
-        <Section id="about" title="About" subtitle="Geospatial Data Scientist">
+        <Section id="about" title="About Me">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
               <h3 className="text-lg font-semibold text-violet-400">What I do</h3>
@@ -109,11 +110,11 @@ export default function Home() {
         <SectionDivider section="timeline" className="my-20" />
         <FadeIn delay={0.2}><Section id="skills" title="Skills"><Skills /></Section></FadeIn>
         <SectionDivider section="skills" flip className="my-20" />
-        <FadeIn delay={0.2}><Section id="contact" title="Contact"><Contact /></Section></FadeIn>
+        <FadeIn delay={0.2}><section id="contact"><Contact /></section></FadeIn>
 
         <footer className="py-20 text-center text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} Keerthi Teja M</p>
-          <p className="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-40">Atlanta, GA • USA</p>
+          <p>© {new Date().getFullYear()} | Keerthi Teja M</p>
+          <p className="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-60">Atlanta, GA • USA</p>
         </footer>
       </main>
     </div>

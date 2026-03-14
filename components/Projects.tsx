@@ -190,13 +190,13 @@ export default function Projects({
 
               <motion.h3
                 layoutId={titleId}
-                className="mt-4 text-lg font-semibold"
+                className="font-display mt-4 text-lg font-semibold leading-snug tracking-[-0.02em] text-white"
                 transition={{ type: "spring", stiffness: 320, damping: 30 }}
               >
                 {p.title}
               </motion.h3>
 
-              <p className="mt-2 text-sm text-slate-300">{p.desc}</p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">{p.desc}</p>
 
               <div className="mt-4 text-sm text-slate-400">
                 Click to view details →
@@ -293,13 +293,13 @@ export default function Projects({
       <div className="max-h-[90vh] overflow-y-auto p-6 md:p-8">
         <motion.h3
           layoutId={titleId}
-          className="text-2xl font-bold leading-tight"
+          className="font-display text-2x1 font-semibold leading-tight tracking-[-0.03em] text-white md:text-3x1"
           transition={{ type: "spring", stiffness: 320, damping: 30 }}
         >
           {project.title}
         </motion.h3>
 
-        <p className="mt-4 text-slate-300">{project.desc}</p>
+        <p className="mt-4 leading-7 text-slate-300">{project.desc}</p>
 
         <div className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((t) => (

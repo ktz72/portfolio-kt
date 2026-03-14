@@ -13,7 +13,7 @@ const cities: City[] = [
   {
     name: "Atlanta",
     coord: [-84.388, 33.749],
-    label: "Pursuing my MS degree in GIST at Georgia Tech",
+    label: "Currently pursuing my Master's degree in GIST at Georgia Tech",
   },
   {
     name: "Visakhapatnam",

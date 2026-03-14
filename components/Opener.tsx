@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
+import Magnetic from "./Magnetic";
 
 const rotatingWords = [
   "Keerthi Teja",
@@ -19,22 +20,22 @@ const GradientBackground = () => {
 
       <motion.div
         animate={{
-          scale: [1, 1.15, 1],
-          x: [0, 70, 0],
-          y: [0, 35, 0],
+          scale: [1, 1.25, 1],
+          x: [0, 160, 0],
+          y: [0, 100, 0],
         }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        className="absolute -left-24 top-0 h-[420px] w-[420px] rounded-full bg-violet-500/20 blur-[120px]"
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -left-24 top-0 h-[420px] w-[420px] rounded-full bg-violet-500/20 blur-[80px]"
       />
 
       <motion.div
         animate={{
           scale: [1, 1.18, 1],
-          x: [0, -50, 0],
-          y: [0, 90, 0],
+          x: [0, -150, 0],
+          y: [0, 100, 0],
         }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-        className="absolute right-[-120px] top-1/4 h-[520px] w-[520px] rounded-full bg-indigo-500/20 blur-[140px]"
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute right-[-120px] top-1/4 h-[520px] w-[520px] rounded-full bg-indigo-500/20 blur-[80px]"
       />
 
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:96px_96px] [mask-image:radial-gradient(circle_at_center,black,transparent_80%)]" />
@@ -107,7 +108,7 @@ export default function Opener() {
         </motion.p>
 
         <div className="relative flex min-h-[180px] items-center justify-center sm:min-h-[220px] md:min-h-[260px]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             <motion.h1
               key={rotatingWords[index]}
               initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
@@ -117,7 +118,7 @@ export default function Opener() {
                 duration: 0.75,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="text-5xl font-semibold tracking-[-0.06em] text-white sm:text-7xl md:text-8xl lg:text-[8.5rem]"
+              className="font-semibold text-5xl tracking-[-0.06em] text-white sm:text-7xl md:text-8xl lg:text-[8.5rem]"
             >
               {rotatingWords[index]}
             </motion.h1>
@@ -138,7 +139,7 @@ export default function Opener() {
 
         <motion.p
           variants={fadeUp}
-          className="mx-auto mt-8 max-w-3xl text-base font-light leading-8 text-slate-400 sm:text-lg md:text-xl"
+          className="mx-auto mt-8 max-w-3xl text-base  leading-8 text-slate-400 sm:text-lg md:text-xl"
         >
           Using{" "}
           <span className="font-medium text-white">
@@ -152,13 +153,16 @@ export default function Opener() {
           variants={fadeUp}
           className="mt-12 flex flex-col items-center gap-4 sm:flex-row"
         >
+          <Magnetic>
           <a
             href="#projects"
             className="rounded-full border border-white/10 bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(255,255,255,0.12)]"
           >
             View Projects
           </a>
+          </Magnetic>
 
+          
           <a
             href="#about"
             className="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-violet-400/40 hover:bg-white/10"
