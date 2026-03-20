@@ -62,8 +62,8 @@ export default function GlobeCityTooltips() {
             <div className="h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400 shadow-[0_0_16px_rgba(34,211,238,0.7)]" />
 
             <div className="pointer-events-none absolute left-5 top-1/2 hidden w-56 -translate-y-1/2 rounded-2xl border border-white/10 bg-slate-950/90 px-4 py-3 text-sm text-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.45)] backdrop-blur-md group-hover:block">
-              <div className="font-semibold tracking-tight text-white">{city.name}</div>
-              <div className="mt-1 leading-relaxed text-slate-300">{city.label}</div>
+              <div className="font-bold tracking-tight text-violet-400">{city.name}</div>
+              <div className="font-serif mt-1 leading-relaxed text-slate-500">{city.label}</div>
             </div>
           </div>
         );

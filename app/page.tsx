@@ -15,9 +15,11 @@ import Skills from "@/components/Skills";
 import Opener from "@/components/Opener";
 
 
+
 export default function Home() {
   const [showTechnicalElements, setShowTechnicalElements] = useState(false);
   const [activeProject,setActiveProject]=useState<any|null>(null);
+  const [isProjectsInView, setIsProjectsInView] = useState(false);
   const isModalOpen = !!activeProject;
 
   useEffect(() => {
@@ -45,9 +47,24 @@ export default function Home() {
     };
   },[isModalOpen]);
 
+  useEffect(() => {
+  const projectsSection = document.getElementById("projects");
+  if (!projectsSection) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setIsProjectsInView(entry.isIntersecting);
+    },
+    { threshold: 0.2 }
+  );
+
+  observer.observe(projectsSection);
+  return () => observer.disconnect();
+}, []);
+
   return (
     <div className="bg-slate-950 text-slate-100 selection:bg-violet-500/30">
-      <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isModalOpen?"pointer-event-none opacity-0 -translate-y-4":"opacity-100 translate-y-0"}`}>
+      <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isModalOpen?"pointer-events-none opacity-0 -translate-y-4":"opacity-100 translate-y-0"}`}>
           <Navbar />
           <ScrollProgress />
         </div>
@@ -76,9 +93,9 @@ export default function Home() {
         </div>
 
         {/* Interactive map tooltips */}
-        <div className="relative z-30">
+        {!isProjectsInView&&!isModalOpen &&(<div className="relative z-30">
           <GlobeCityTooltips />
-        </div>
+        </div>)}
       </div>
 
       {/* 3. MAIN CONTENT 

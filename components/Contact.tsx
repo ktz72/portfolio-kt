@@ -9,9 +9,9 @@ export default function Contact() {
             Let's Connect
           </p>
           
-          <p className="mt-3 text-base text-slate-300">
+          <p className=" font-serif mt-3 text-base text-slate-300">
             I’m currently open to internships, full-time and research opportunities in GIS, Remote Sensing.
-            
+              
           </p>
         </div>
 
@@ -34,6 +34,17 @@ export default function Contact() {
             className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             LinkedIn
+          </a>
+          </Magnetic>
+
+           <Magnetic>
+          <a
+            href="https://drive.google.com/file/d/1YA2eYu6vouu_2MZqguTdhclTE05U3rLW/view?usp=drive_link"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center rounded-xl bg-emerald-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+          >
+            View Resume/CV
           </a>
           </Magnetic>
         </div>

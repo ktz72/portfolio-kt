@@ -3,19 +3,19 @@ export default function Timeline() {
     <div className="space-y-3">
       {[
         {
-          year: "2026",
-          title: "MS GIS&T — Georgia Tech",
-          desc: "Focus on geospatial analytics & remote sensing.",
-        },
-        {
           year: "2025",
-          title: "Raster Suitability Workflow",
-          desc: "Reclass + weighted overlay + validation.",
+          title: "MS GIS&T — Georgia Institute Of Technology",
+          desc: "Started pursuing my Master's degree at Georgia Tech",
         },
         {
-          year: "2024",
-          title: "Internship / Role",
-          desc: "Describe impact in 1–2 lines.",
+          year: "2023",
+          title: "Graduation and First job",
+          desc: "Completed my Bachelor's Study and landed my first job as a Trainee-Engineer focused on Processing LiDAR Data.",
+        },
+        {
+          year: "2019",
+          title: "Bachelor of Technology in Geoinformatics — Andhra University College of Engineering",
+          desc: "Started pursuing my Bachelor's degree with main focus on Remote Sensing, GIS, and Information Technology",
         },
       ].map((item) => (
         <div

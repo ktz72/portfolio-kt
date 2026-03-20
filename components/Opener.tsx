@@ -143,7 +143,7 @@ export default function Opener() {
         >
           Using{" "}
           <span className="font-medium text-white">
-            GIS, remote sensing, and spatial data science
+            GIS, remote sensing, and Machine Learning
           </span>{" "}
           to turn complex geospatial datasets into clear, decision-ready
           insights and meaningful digital experiences.
